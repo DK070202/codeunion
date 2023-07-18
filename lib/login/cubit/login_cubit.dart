@@ -55,7 +55,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) {
     emitter(
       state.copyWith(
-        // ignore: avoid_redundant_argument_values
         errorMessage: '',
         status: FormzSubmissionStatus.initial,
       ),

@@ -1,4 +1,4 @@
-import 'package:codeunion/login/model/model.dart';
+import 'package:codeunion/presentation/login/model/model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';

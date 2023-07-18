@@ -1,6 +1,6 @@
 import 'package:codeunion/app/config/icons/app_icons.dart';
-import 'package:codeunion/home/cubit/home_cubit.dart';
-import 'package:codeunion/home/cubit/home_state.dart';
+import 'package:codeunion/presentation/home/cubit/home_cubit.dart';
+import 'package:codeunion/presentation/home/cubit/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

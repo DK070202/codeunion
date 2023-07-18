@@ -1,7 +1,9 @@
 import 'package:codeunion/app/config/config.dart';
+import 'package:codeunion/app/router/router.dart';
 import 'package:codeunion/components/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -23,14 +25,14 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          AppText.heading2(
+          const AppText.heading2(
             'Марипбек Чингиз',
             height: 1.67,
           ),
           const SizedBox(
             height: 12,
           ),
-          AppText.subheading(
+          const AppText.subheading(
             'maripbekoff@gmail.com',
             color: AppColors.gray92,
           ),
@@ -39,7 +41,9 @@ class ProfilePage extends StatelessWidget {
           ),
           _ProfileTile(
             title: 'Выйти',
-            onTap: () {},
+            onTap: () {
+              context.go(AppRoutes.login);
+            },
           )
         ],
       ),
@@ -60,16 +64,19 @@ class _ProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 29,
-        vertical: 21,
-      ),
-      width: double.infinity,
-      color: AppColors.offWhite,
-      child: AppText.subheading(
-        title,
-        color: color,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 29,
+          vertical: 21,
+        ),
+        width: double.infinity,
+        color: AppColors.offWhite,
+        child: AppText.subheading(
+          title,
+          color: color,
+        ),
       ),
     );
   }

@@ -10,135 +10,8 @@ enum Weight {
   extrabold,
 }
 
+@immutable
 class AppText extends StatelessWidget {
-  /// For heading1. Font size 28.
-  AppText.heading1(
-    this.data, {
-    super.key,
-    this.height = 1.5,
-    this.letterSpacing,
-    this.textAlign,
-    this.fontSize,
-    this.color = Colors.black,
-    this.fontWeight = Weight.bold,
-    this.maxLines,
-    this.textOverflow,
-    this.textDecoration,
-    this.fontStyle = FontStyle.normal,
-  }) : style = AppTypography.heading1;
-
-  /// For heading2. Font size 24.
-  AppText.heading2(
-    this.data, {
-    super.key,
-    this.height = 1.5,
-    this.letterSpacing,
-    this.textAlign,
-    this.fontSize,
-    this.color = Colors.black,
-    this.fontWeight = Weight.bold,
-    this.maxLines,
-    this.textOverflow,
-    this.textDecoration,
-    this.fontStyle = FontStyle.normal,
-  }) : style = AppTypography.heading2;
-
-  /// For heading3. Font size 20.
-  AppText.heading3(
-    this.data, {
-    super.key,
-    this.height = 1.5,
-    this.letterSpacing,
-    this.textAlign,
-    this.fontSize,
-    this.color = Colors.black,
-    this.fontWeight = Weight.semiBold,
-    this.maxLines,
-    this.textOverflow,
-    this.textDecoration,
-    this.fontStyle = FontStyle.normal,
-  }) : style = AppTypography.heading3;
-
-  /// For heading4. Font size 18.
-  AppText.heading4(
-    this.data, {
-    super.key,
-    this.height = 1.5,
-    this.letterSpacing,
-    this.textAlign,
-    this.fontSize,
-    this.color = Colors.black,
-    this.fontWeight = Weight.bold,
-    this.maxLines,
-    this.textOverflow,
-    this.textDecoration,
-    this.fontStyle = FontStyle.normal,
-  }) : style = AppTypography.heading4;
-
-  /// For subheading. Font size 16.
-  AppText.subheading(
-    this.data, {
-    super.key,
-    this.height = 1.5,
-    this.letterSpacing,
-    this.textAlign,
-    this.fontSize,
-    this.color = Colors.black,
-    this.fontWeight = Weight.medium,
-    this.maxLines,
-    this.textOverflow,
-    this.textDecoration,
-    this.fontStyle = FontStyle.normal,
-  }) : style = AppTypography.subheading;
-
-  /// For subtitle. Font size 12.
-  AppText.subtitle(
-    this.data, {
-    super.key,
-    this.height = 1.5,
-    this.letterSpacing,
-    this.textAlign,
-    this.fontSize,
-    this.color = Colors.black,
-    this.fontWeight = Weight.medium,
-    this.maxLines,
-    this.textOverflow,
-    this.textDecoration,
-    this.fontStyle = FontStyle.normal,
-  }) : style = AppTypography.subtitle;
-
-  /// For subtitle. Font size 10.
-  AppText.caption(
-    this.data, {
-    super.key,
-    this.height = 1.5,
-    this.letterSpacing,
-    this.textAlign,
-    this.fontSize,
-    this.color = Colors.black,
-    this.fontWeight = Weight.medium,
-    this.maxLines,
-    this.textOverflow,
-    this.textDecoration,
-    this.fontStyle = FontStyle.normal,
-  }) : style = AppTypography.caption;
-
-  /// For title. Font size 14.
-  AppText.title(
-    this.data, {
-    super.key,
-    this.height = 1.5,
-    this.letterSpacing,
-    this.textAlign,
-    this.fontSize,
-    this.color = Colors.black,
-    this.fontWeight = Weight.medium,
-    this.maxLines,
-    this.textOverflow,
-    this.textDecoration,
-    this.fontStyle = FontStyle.normal,
-  }) : style = AppTypography.title;
-
   const AppText(
     this.data, {
     super.key,
@@ -154,6 +27,134 @@ class AppText extends StatelessWidget {
     this.textDecoration,
     this.fontStyle = FontStyle.normal,
   });
+
+  /// For heading1. Font size 28.
+  const AppText.heading1(
+    this.data, {
+    super.key,
+    this.height = 1.5,
+    this.letterSpacing,
+    this.textAlign,
+    this.fontSize,
+    this.color = Colors.black,
+    this.fontWeight = Weight.bold,
+    this.maxLines,
+    this.textOverflow,
+    this.textDecoration,
+    this.fontStyle = FontStyle.normal,
+  }) : style = AppTypography.heading1;
+
+  /// For heading2. Font size 24.
+  const AppText.heading2(
+    this.data, {
+    super.key,
+    this.height = 1.5,
+    this.letterSpacing,
+    this.textAlign,
+    this.fontSize,
+    this.color = Colors.black,
+    this.fontWeight = Weight.bold,
+    this.maxLines,
+    this.textOverflow,
+    this.textDecoration,
+    this.fontStyle = FontStyle.normal,
+  }) : style = AppTypography.heading2;
+
+  /// For heading3. Font size 20.
+  const AppText.heading3(
+    this.data, {
+    super.key,
+    this.height = 1.5,
+    this.letterSpacing,
+    this.textAlign,
+    this.fontSize,
+    this.color = Colors.black,
+    this.fontWeight = Weight.semiBold,
+    this.maxLines,
+    this.textOverflow,
+    this.textDecoration,
+    this.fontStyle = FontStyle.normal,
+  }) : style = AppTypography.heading3;
+
+  /// For heading4. Font size 18.
+  const AppText.heading4(
+    this.data, {
+    super.key,
+    this.height = 1.5,
+    this.letterSpacing,
+    this.textAlign,
+    this.fontSize,
+    this.color = Colors.black,
+    this.fontWeight = Weight.bold,
+    this.maxLines,
+    this.textOverflow,
+    this.textDecoration,
+    this.fontStyle = FontStyle.normal,
+  }) : style = AppTypography.heading4;
+
+  /// For subheading. Font size 16.
+  const AppText.subheading(
+    this.data, {
+    super.key,
+    this.height = 1.5,
+    this.letterSpacing,
+    this.textAlign,
+    this.fontSize,
+    this.color = Colors.black,
+    this.fontWeight = Weight.medium,
+    this.maxLines,
+    this.textOverflow,
+    this.textDecoration,
+    this.fontStyle = FontStyle.normal,
+  }) : style = AppTypography.subheading;
+
+  /// For subtitle. Font size 12.
+  const AppText.subtitle(
+    this.data, {
+    super.key,
+    this.height = 1.5,
+    this.letterSpacing,
+    this.textAlign,
+    this.fontSize,
+    this.color = Colors.black,
+    this.fontWeight = Weight.medium,
+    this.maxLines,
+    this.textOverflow,
+    this.textDecoration,
+    this.fontStyle = FontStyle.normal,
+  }) : style = AppTypography.subtitle;
+
+  /// For subtitle. Font size 10.
+  const AppText.caption(
+    this.data, {
+    super.key,
+    this.height = 1.5,
+    this.letterSpacing,
+    this.textAlign,
+    this.fontSize,
+    this.color = Colors.black,
+    this.fontWeight = Weight.medium,
+    this.maxLines,
+    this.textOverflow,
+    this.textDecoration,
+    this.fontStyle = FontStyle.normal,
+  }) : style = AppTypography.caption;
+
+  /// For title. Font size 14.
+  const AppText.title(
+    this.data, {
+    super.key,
+    this.height = 1.5,
+    this.letterSpacing,
+    this.textAlign,
+    this.fontSize,
+    this.color = Colors.black,
+    this.fontWeight = Weight.medium,
+    this.maxLines,
+    this.textOverflow,
+    this.textDecoration,
+    this.fontStyle = FontStyle.normal,
+  }) : style = AppTypography.title;
 
   final String data;
   final TextStyle? style;
@@ -186,7 +187,7 @@ class AppText extends StatelessWidget {
         return FontWeight.w700;
       case Weight.extrabold:
         return FontWeight.w800;
-      default:
+      case _:
         return FontWeight.w400;
     }
   }

@@ -1,7 +1,7 @@
 import 'package:codeunion/app/router/router.dart';
-import 'package:codeunion/presentation/home/home.dart';
-import 'package:codeunion/presentation/login/login.dart';
-import 'package:codeunion/presentation/profile/profile.dart';
+import 'package:codeunion/home/home.dart';
+import 'package:codeunion/login/login.dart';
+import 'package:codeunion/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

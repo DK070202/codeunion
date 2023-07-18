@@ -1,8 +1,8 @@
 import 'package:codeunion/app/config/config.dart';
 import 'package:codeunion/app/router/router.dart';
 import 'package:codeunion/components/components.dart';
-import 'package:codeunion/presentation/login/cubit/login_cubit.dart';
-import 'package:codeunion/presentation/login/view/alert_dialog.dart';
+import 'package:codeunion/login/cubit/login_cubit.dart';
+import 'package:codeunion/login/view/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

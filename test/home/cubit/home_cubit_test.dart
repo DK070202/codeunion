@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:codeunion/home/cubit/home_cubit.dart';
-import 'package:codeunion/home/cubit/home_state.dart';
+import 'package:codeunion/presentation/home/cubit/home_cubit.dart';
+import 'package:codeunion/presentation/home/cubit/home_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

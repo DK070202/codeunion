@@ -1,7 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:codeunion/login/cubit/login_cubit.dart';
-import 'package:codeunion/login/model/email.dart';
-import 'package:codeunion/login/model/password.dart';
+import 'package:codeunion/presentation/login/cubit/login_cubit.dart';
+import 'package:codeunion/presentation/login/model/model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:formz/formz.dart';
 

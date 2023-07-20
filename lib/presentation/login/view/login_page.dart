@@ -1,12 +1,14 @@
 import 'package:codeunion/app/config/config.dart';
 import 'package:codeunion/app/router/router.dart';
-import 'package:codeunion/components/components.dart';
-import 'package:codeunion/presentation/login/cubit/login_cubit.dart';
+import 'package:codeunion/domain/auth/repository/auth_repo.dart';
+import 'package:codeunion/presentation/components/components.dart';
+import 'package:codeunion/presentation/login/cubit/login_bloc.dart';
 import 'package:codeunion/presentation/login/view/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatelessWidget {
@@ -15,7 +17,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginBloc>(
-      create: (context) => LoginBloc(),
+      create: (context) => LoginBloc(
+        authRepository: GetIt.I<AuthRepository>(),
+      ),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Авторизация'),

@@ -1,3 +1,5 @@
+import 'package:codeunion/domain/auth/entity/login_response.dart';
+import 'package:codeunion/domain/auth/repository/auth_repo.dart';
 import 'package:codeunion/presentation/login/model/model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,12 +9,16 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(const LoginState()) {
+  LoginBloc({
+    required AuthRepository authRepository,
+  })  : _authRepository = authRepository,
+        super(const LoginState()) {
     on<LoginEmailChanged>(_onEmailChanged);
     on<LoginPasswordChanged>(_passwordChanged);
     on<LoginSubmitted>(_onSubmitted);
     on<ResetLoginValidation>(_onResetValidation);
   }
+  final AuthRepository _authRepository;
 
   /// Validates the email.
   ///
@@ -99,8 +105,7 @@ In case invalid form data there should be one or more formz filed
       );
 
       try {
-        // ignore: inference_failure_on_instance_creation
-        await Future.delayed(const Duration(seconds: 2));
+        await _authRepository.login(state.email.value, state.password.value);
         emitter(state.copyWith(status: FormzSubmissionStatus.success));
       } catch (e) {
         emitter(state.copyWith(status: FormzSubmissionStatus.failure));

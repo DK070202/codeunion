@@ -1,4 +1,4 @@
-part of 'login_cubit.dart';
+part of 'login_bloc.dart';
 
 sealed class LoginEvent extends Equatable {
   const LoginEvent();
@@ -35,4 +35,9 @@ final class LoginSubmitted extends LoginEvent {
 
 final class ResetLoginValidation extends LoginEvent {
   const ResetLoginValidation();
+}
+
+final class LoginSuccess extends LoginEvent {
+  const LoginSuccess(this.loginResponse);
+  final LoginResponseEntity loginResponse;
 }

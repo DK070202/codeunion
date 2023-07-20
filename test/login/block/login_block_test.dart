@@ -1,18 +1,43 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:codeunion/presentation/login/cubit/login_cubit.dart';
+import 'package:codeunion/domain/auth/entity/login_response.dart';
+import 'package:codeunion/domain/auth/entity/token.dart';
+import 'package:codeunion/domain/auth/repository/auth_repo.dart';
+import 'package:codeunion/domain/user/entity/user_entity.dart';
+import 'package:codeunion/presentation/login/cubit/login_bloc.dart';
 import 'package:codeunion/presentation/login/model/model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:formz/formz.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 
+import 'login_block_test.mocks.dart';
+
+@GenerateMocks([AuthRepository])
 void main() {
+  final mock = MockAuthRepository();
+
+  when(mock.login('dhruvin.vainsh02@gmail.com', 'dhruvin')).thenAnswer(
+    (i) async => const LoginResponseEntity(
+      user: UserEntity(
+        id: '1',
+        nicName: 'Dk',
+        email: 'dhruvin.vainsh02@gmail.com',
+      ),
+      tokens: TokensEntity(
+        refreshToken: 'random-token-value',
+        accessToken: 'random-token-value',
+      ),
+    ),
+  );
+
   group('LoginBloc', () {
     test('initial state of forma should [FormzSubmissionStatus.initial]', () {
-      expect(LoginBloc().state, const LoginState());
+      expect(LoginBloc(authRepository: mock).state, const LoginState());
     });
 
     blocTest<LoginBloc, LoginState>(
       'email filed of LoginState should be dirty',
-      build: LoginBloc.new,
+      build: () => LoginBloc(authRepository: mock),
       act: (cubit) => cubit.add(
         const LoginEmailChanged('dhruvin.vainsh02@gmail.com'),
       ),
@@ -27,7 +52,7 @@ void main() {
 
     blocTest<LoginBloc, LoginState>(
       'password filed of LoginState should be dirty',
-      build: LoginBloc.new,
+      build: () => LoginBloc(authRepository: mock),
       act: (cubit) => cubit.add(
         const LoginPasswordChanged('randomPassword@1234'),
       ),
@@ -42,7 +67,7 @@ void main() {
 
     blocTest<LoginBloc, LoginState>(
       'should provide empty email error',
-      build: LoginBloc.new,
+      build: () => LoginBloc(authRepository: mock),
       act: (cubit) => cubit.add(
         const LoginSubmitted(),
       ),
@@ -58,7 +83,7 @@ void main() {
 
     blocTest<LoginBloc, LoginState>(
       'should provide invalid email error',
-      build: LoginBloc.new,
+      build: () => LoginBloc(authRepository: mock),
       act: (cubit) {
         cubit
           ..add(
@@ -88,7 +113,7 @@ void main() {
 
     blocTest<LoginBloc, LoginState>(
       'should provide empty password error',
-      build: LoginBloc.new,
+      build: () => LoginBloc(authRepository: mock),
       act: (cubit) {
         cubit
           ..add(
@@ -118,7 +143,7 @@ void main() {
 
     blocTest<LoginBloc, LoginState>(
       'should provide invalid password error',
-      build: LoginBloc.new,
+      build: () => LoginBloc(authRepository: mock),
       act: (cubit) {
         cubit
           ..add(
@@ -160,7 +185,7 @@ void main() {
 
     blocTest<LoginBloc, LoginState>(
       'should update status FormzSubmissionStatus.success',
-      build: LoginBloc.new,
+      build: () => LoginBloc(authRepository: mock),
       wait: const Duration(seconds: 2),
       act: (cubit) {
         cubit

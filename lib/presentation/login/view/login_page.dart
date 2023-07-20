@@ -1,7 +1,7 @@
 import 'package:codeunion/app/config/config.dart';
 import 'package:codeunion/app/router/router.dart';
-import 'package:codeunion/components/components.dart';
 import 'package:codeunion/domain/auth/repository/auth_repo.dart';
+import 'package:codeunion/presentation/components/components.dart';
 import 'package:codeunion/presentation/login/cubit/login_bloc.dart';
 import 'package:codeunion/presentation/login/view/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';

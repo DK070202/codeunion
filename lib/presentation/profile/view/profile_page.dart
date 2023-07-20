@@ -1,6 +1,6 @@
 import 'package:codeunion/app/config/config.dart';
 import 'package:codeunion/app/router/router.dart';
-import 'package:codeunion/components/app_text.dart';
+import 'package:codeunion/presentation/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';

@@ -35,10 +35,10 @@ _i1.GetIt $setUpLocator(
   );
   gh.lazySingleton<_i3.ApiClient>(() => _i3.ApiClient());
   gh.lazySingleton<_i4.AuthDataSource>(
-      () => _i4.AuthDataSourceIMPL(gh<_i3.ApiClient>()));
+      () => _i4.AuthDataSourceIMPL(gh<_i3.ApiClient>()),);
   gh.singleton<_i5.AuthRepository>(_i6.AuthRepoIMPL(gh<_i4.AuthDataSource>()));
   gh.lazySingleton<_i7.UserDataSource>(
-      () => _i7.UserDataSourceIMPL(gh<_i3.ApiClient>()));
+      () => _i7.UserDataSourceIMPL(gh<_i3.ApiClient>()),);
   gh.lazySingleton<_i8.UserRepository>(() => _i9.UserRepoSitoryIMPL());
   return getIt;
 }

@@ -9,7 +9,7 @@ abstract interface class AuthDataSource {
   Future<TokensModel> refresh(TokensModel tokensModel);
 }
 
-@LazySingleton(as: AuthDataSource)
+@Injectable(as: AuthDataSource)
 class AuthDataSourceIMPL implements AuthDataSource {
   const AuthDataSourceIMPL(this._client);
   final ApiClient _client;

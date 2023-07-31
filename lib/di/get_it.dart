@@ -9,4 +9,4 @@ import 'package:injectable/injectable.dart';
 )
 final getIt = GetIt.I;
 
-GetIt setUpLocator() => $setUpLocator(getIt);
+Future<GetIt> setUpLocator() => $setUpLocator(getIt);

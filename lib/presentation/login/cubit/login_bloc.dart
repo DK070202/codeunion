@@ -2,6 +2,7 @@ import 'package:codeunion/domain/auth/entity/login_response.dart';
 import 'package:codeunion/domain/auth/repository/auth_repo.dart';
 import 'package:codeunion/presentation/login/model/model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
@@ -11,7 +12,9 @@ part 'login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({
     required AuthRepository authRepository,
+    VoidCallback? onSuccessfulAuthentication,
   })  : _authRepository = authRepository,
+        _onSuccessfulAuthentication = onSuccessfulAuthentication,
         super(const LoginState()) {
     on<LoginEmailChanged>(_onEmailChanged);
     on<LoginPasswordChanged>(_passwordChanged);
@@ -19,6 +22,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<ResetLoginValidation>(_onResetValidation);
   }
   final AuthRepository _authRepository;
+  final VoidCallback? _onSuccessfulAuthentication;
 
   /// Validates the email.
   ///
@@ -105,7 +109,13 @@ In case invalid form data there should be one or more formz filed
       );
 
       try {
-        await _authRepository.login(state.email.value, state.password.value);
+        await _authRepository.login(
+          state.email.value,
+          state.password.value,
+        );
+
+        _onSuccessfulAuthentication?.call();
+
         emitter(state.copyWith(status: FormzSubmissionStatus.success));
       } catch (e) {
         emitter(state.copyWith(status: FormzSubmissionStatus.failure));

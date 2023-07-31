@@ -7,7 +7,7 @@ abstract interface class UserDataSource {
   Future<UserModel> userModel();
 }
 
-@LazySingleton(as: UserDataSource)
+@Injectable(as: UserDataSource)
 class UserDataSourceIMPL implements UserDataSource {
   UserDataSourceIMPL(this._apiClient);
 

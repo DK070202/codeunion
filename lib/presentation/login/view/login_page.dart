@@ -52,7 +52,7 @@ class LoginForm extends StatelessWidget {
         return;
 
       case FormzSubmissionStatus.success:
-        context.replace(AppRoutes.profile);
+        context.go(AppRoutes.profile);
         return;
 
       case _:

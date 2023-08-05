@@ -32,13 +32,16 @@ final class AuthRepoIMPL implements AuthRepository {
       TokensModel(accessToken: accessToken, refreshToken: refreshToken),
     );
 
-    await _authLocalDataSource.logout();
-
     return response;
   }
 
   @override
   bool isAuthenticated() {
     return _authLocalDataSource.isAuthenticated();
+  }
+
+  @override
+  Future<void> logout() async {
+    await _authLocalDataSource.logout();
   }
 }

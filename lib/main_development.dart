@@ -4,6 +4,5 @@ import 'package:equatable/equatable.dart';
 
 void main() {
   EquatableConfig.stringify = true;
-  print(const String.fromEnvironment('HOST_URL'));
   bootstrap(() => const App());
 }

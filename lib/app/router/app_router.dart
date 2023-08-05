@@ -1,8 +1,12 @@
+import 'dart:developer' as dev;
+
 import 'package:codeunion/app/router/router.dart';
+import 'package:codeunion/domain/auth/repository/auth_repo.dart';
 import 'package:codeunion/presentation/home/home.dart';
 import 'package:codeunion/presentation/login/login.dart';
 import 'package:codeunion/presentation/profile/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 /// Holds all router configuration for app.
@@ -18,10 +22,13 @@ final class AppRouter {
   );
 
   static final router = GoRouter(
-    initialLocation: AppRoutes.login,
+    initialLocation: GetIt.I<AuthRepository>().isAuthenticated()
+        ? AppRoutes.map
+        : AppRoutes.tape,
     navigatorKey: _rootKey,
     routes: [
       ShellRoute(
+        parentNavigatorKey: _rootKey,
         navigatorKey: _shellRouterKey,
         builder: (context, state, child) => HomePage(child: child),
         routes: [
@@ -68,5 +75,39 @@ final class AppRouter {
         builder: (ctx, state) => const LoginPage(),
       )
     ],
+    redirect: (context, state) {
+      dev.log(state.toStringDebugString());
+
+      final isAuthenticated = GetIt.I<AuthRepository>().isAuthenticated();
+      if (isAuthenticated) {
+        return null;
+      }
+
+      if (!isAuthenticated && state.matchedLocation != AppRoutes.login) {
+        final encoded = Uri.parse(state.location).toString();
+        return '${AppRoutes.login}?redirectTo=$encoded';
+      }
+
+      return null;
+    },
   );
+}
+
+extension on GoRouterState {
+  // ignore: unused_element
+  String toStringDebugString() {
+    final stringBuffer = StringBuffer()
+      ..writeln('GoRouterState(')
+      ..writeln('location: $location')
+      ..writeln('matchedLocation:$matchedLocation')
+      ..writeln('name: $name')
+      ..writeln('path: $path')
+      ..writeln('fullPath: $fullPath')
+      ..writeln('fullPath: $pathParameters')
+      ..writeln('fullPath: $queryParameters')
+      ..writeln('fullPath: $queryParametersAll');
+
+    final value = stringBuffer.toString();
+    return value;
+  }
 }

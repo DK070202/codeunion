@@ -1,12 +1,29 @@
 import 'package:codeunion/app/config/config.dart';
-import 'package:codeunion/app/router/router.dart';
 import 'package:codeunion/presentation/components/components.dart';
+import 'package:codeunion/presentation/profile/cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get_it/get_it.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => ProfilePageCubit(
+        GetIt.I(),
+      ),
+      child: const ProfileView(),
+    );
+  }
+}
+
+class ProfileView extends StatelessWidget {
+  const ProfileView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +58,7 @@ class ProfilePage extends StatelessWidget {
           ),
           _ProfileTile(
             title: 'Выйти',
-            onTap: () {
-              context.go(AppRoutes.login);
-            },
+            onTap: () {},
           )
         ],
       ),

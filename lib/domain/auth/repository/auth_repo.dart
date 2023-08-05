@@ -5,5 +5,6 @@ abstract class AuthRepository {
   const AuthRepository();
   Future<LoginResponseEntity> login(String email, String password);
   Future<TokensEntity> refresh(String accessToken, String refreshToken);
+  Future<void> logout();
   bool isAuthenticated();
 }

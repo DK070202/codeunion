@@ -39,6 +39,14 @@ final class AppRouter {
                 appBar: AppBar(
                   title: const Text('Лента'),
                 ),
+                body: Center(
+                  child: OutlinedButton(
+                    onPressed: () {
+                      context.push(AppRoutes.test);
+                    },
+                    child: const Text('Navigate'),
+                  ),
+                ),
               ),
             ),
           ),
@@ -71,9 +79,23 @@ final class AppRouter {
         ],
       ),
       GoRoute(
+        path: AppRoutes.test,
+        builder: (ctx, state) => WillPopScope(
+          onWillPop: () {
+            print('Pop called on the test page');
+            return Future.value(false);
+          },
+          child: const Scaffold(
+            body: Center(
+              child: Text('Test page'),
+            ),
+          ),
+        ),
+      ),
+      GoRoute(
         path: AppRoutes.login,
         builder: (ctx, state) => const LoginPage(),
-      )
+      ),
     ],
     redirect: (context, state) {
       dev.log(state.toStringDebugString());

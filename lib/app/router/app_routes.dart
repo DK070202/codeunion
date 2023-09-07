@@ -4,6 +4,7 @@ final class AppRoutes {
 
   static const tape = '/tape';
   static const map = '/map';
+  static const test = '/test';
   static const selected = '/selected';
   static const profile = '/profile';
   static const login = '/login';

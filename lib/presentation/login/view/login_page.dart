@@ -106,7 +106,7 @@ class LoginForm extends StatelessWidget {
                           );
                     },
                   ),
-                )
+                ),
               ],
             ),
           ),

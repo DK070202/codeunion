@@ -14,6 +14,7 @@
         "development",
         "--target",
         "lib/main_development.dart",
+        "--debug",
         "--dart-define=HOST_URL=https://api.thiele.dev"
       ]
     },

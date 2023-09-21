@@ -1,0 +1,34 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "buildConfigurations": {
+                    "main": {
+                        "projectId": "codeunion-prod",
+                        "appId": "1:99986859747:android:0b9c24c659382cb03a47d6",
+                        "fileOutput": "android/app/src/main/google-services.json"
+                    },
+                    "development/google-services": {
+                        "projectId": "codeunion-d20b8",
+                        "appId": "1:182091080563:android:1d04f1fbfbea6d45a4db06",
+                        "fileOutput": "android/app/src/development/google-services.json"
+                    }
+                }
+            },
+            "dart": {
+                "lib/firebase_options_prod.dart": {
+                    "projectId": "codeunion-prod",
+                    "configurations": {
+                        "android": "1:99986859747:android:0b9c24c659382cb03a47d6"
+                    }
+                },
+                "lib/firebase_options_dev.dart": {
+                    "projectId": "codeunion-d20b8",
+                    "configurations": {
+                        "android": "1:182091080563:android:1d04f1fbfbea6d45a4db06"
+                    }
+                }
+            }
+        }
+    }
+}

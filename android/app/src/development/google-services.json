@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "182091080563",
+    "project_id": "codeunion-d20b8",
+    "storage_bucket": "codeunion-d20b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182091080563:android:a94f3bdc0f6c7cbaa4db06",
+        "android_client_info": {
+          "package_name": "com.codeunion.codeunion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL3iuntf-OG8qziemqzg2UNZGU0Po5Zws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182091080563:android:1d04f1fbfbea6d45a4db06",
+        "android_client_info": {
+          "package_name": "com.codeunion.codeunion.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL3iuntf-OG8qziemqzg2UNZGU0Po5Zws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

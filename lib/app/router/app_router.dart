@@ -8,6 +8,8 @@ import 'package:codeunion/presentation/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sheet/route.dart';
+import 'package:sheet/sheet.dart';
 
 /// Holds all router configuration for app.
 final class AppRouter {
@@ -23,8 +25,8 @@ final class AppRouter {
 
   static final router = GoRouter(
     initialLocation: GetIt.I<AuthRepository>().isAuthenticated()
-        ? AppRoutes.map
-        : AppRoutes.tape,
+        ? AppRoutes.tape
+        : AppRoutes.login,
     navigatorKey: _rootKey,
     routes: [
       ShellRoute(
@@ -34,10 +36,22 @@ final class AppRouter {
         routes: [
           GoRoute(
             path: AppRoutes.tape,
-            pageBuilder: (context, state) => NoTransitionPage(
+            pageBuilder: (_, state) => NoTransitionPage(
               child: Scaffold(
                 appBar: AppBar(
                   title: const Text('Лента'),
+                ),
+                body: Center(
+                  child: Builder(
+                    builder: (context) {
+                      return OutlinedButton(
+                        onPressed: () {
+                          context.push(AppRoutes.investmentModal);
+                        },
+                        child: const Text('Navigate'),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
@@ -67,13 +81,62 @@ final class AppRouter {
             pageBuilder: (ctx, state) => const NoTransitionPage(
               child: ProfilePage(),
             ),
+            routes: [
+              GoRoute(
+                path: AppRoutes.investmentModal,
+                pageBuilder: (context, state) {
+                  return SheetPage<void>(
+                    fit: SheetFit.loose,
+                    child: WillPopScope(
+                      onWillPop: () async {
+                        print(
+                            'Back button has been pressed at investment modal');
+                        return Future.value(true);
+                      },
+                      child: Container(
+                        color: Colors.white,
+                        height: 200,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Text(
+                              'Testing bottom sheet',
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            OutlinedButton(
+                              onPressed: () {
+                                context.push(AppRoutes.test);
+                              },
+                              child: const Text('Navigate'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ],
       ),
       GoRoute(
+        path: AppRoutes.test,
+        builder: (ctx, state) => const Scaffold(
+          body: Center(
+            child: Text('Test page'),
+          ),
+        ),
+      ),
+      GoRoute(
         path: AppRoutes.login,
         builder: (ctx, state) => const LoginPage(),
-      )
+      ),
     ],
     redirect: (context, state) {
       dev.log(state.toStringDebugString());

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "99986859747",
+    "project_id": "codeunion-prod",
+    "storage_bucket": "codeunion-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99986859747:android:0b9c24c659382cb03a47d6",
+        "android_client_info": {
+          "package_name": "com.codeunion.codeunion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAG8R0ZMqwfD2UcXEhWs8RBJUQbrw84pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

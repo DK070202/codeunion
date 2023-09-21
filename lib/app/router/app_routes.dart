@@ -8,4 +8,5 @@ final class AppRoutes {
   static const selected = '/selected';
   static const profile = '/profile';
   static const login = '/login';
+  static const investmentModal = 'start-investment';
 }

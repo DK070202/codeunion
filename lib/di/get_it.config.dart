@@ -40,25 +40,20 @@ Future<_i1.GetIt> $setUpLocator(
   final localDB = _$LocalDB();
   gh.lazySingleton<_i3.ApiClient>(() => _i3.ApiClient());
   gh.factory<_i4.AuthDataSource>(
-    () => _i4.AuthDataSourceIMPL(gh<_i3.ApiClient>()),
-  );
+      () => _i4.AuthDataSourceIMPL(gh<_i3.ApiClient>()));
   await gh.singletonAsync<_i5.SharedPreferences>(
     () => localDB.sharedPreferences,
     preResolve: true,
   );
   gh.factory<_i6.UserDataSource>(
-    () => _i6.UserDataSourceIMPL(gh<_i3.ApiClient>()),
-  );
+      () => _i6.UserDataSourceIMPL(gh<_i3.ApiClient>()));
   gh.factory<_i7.UserRepository>(() => _i8.UserRepoSitoryIMPL());
   gh.factory<_i9.AuthLocalDataSource>(
-    () => _i9.AuthLocalDataSourceIMPL(gh<_i5.SharedPreferences>()),
-  );
-  gh.factory<_i10.AuthRepository>(
-    () => _i11.AuthRepoIMPL(
-      gh<_i4.AuthDataSource>(),
-      gh<_i9.AuthLocalDataSource>(),
-    ),
-  );
+      () => _i9.AuthLocalDataSourceIMPL(gh<_i5.SharedPreferences>()));
+  gh.factory<_i10.AuthRepository>(() => _i11.AuthRepoIMPL(
+        gh<_i4.AuthDataSource>(),
+        gh<_i9.AuthLocalDataSource>(),
+      ));
   return getIt;
 }
 

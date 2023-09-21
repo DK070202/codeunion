@@ -3,6 +3,8 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:codeunion/di/get_it.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/widgets.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -21,8 +23,24 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+Future<void> bootstrap(
+  FutureOr<Widget> Function() builder, [
+  FirebaseOptions? firebaseOptions,
+]) async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  if (firebaseOptions != null) {
+    try {
+      await Firebase.initializeApp(
+        options: firebaseOptions,
+      );
+    } catch (e) {
+      log('Error occurred while initialing firebase app. error: $e');
+    }
+  }
+  await FirebaseDynamicLinks.instance
+      .getInitialLink()
+      .then((value) => print(value?.link.toString() ?? ''));
 
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);

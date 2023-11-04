@@ -73,20 +73,20 @@ class _HomeNavBar extends StatelessWidget {
       onTap: (index) => _onTap(context, index, cubit),
       items: const [
         BottomNavigationBarItem(
-          label: 'Лента',
+          label: 'Tape',
           icon: Icon(AppIcons.tape),
         ),
         BottomNavigationBarItem(
           icon: Icon(AppIcons.map),
-          label: 'Карта',
+          label: 'Map',
         ),
         BottomNavigationBarItem(
           icon: Icon(AppIcons.selected),
-          label: 'Избранные',
+          label: 'Selected',
         ),
         BottomNavigationBarItem(
           icon: Icon(AppIcons.profile),
-          label: 'Профиль',
+          label: 'Profile',
         ),
       ],
     );

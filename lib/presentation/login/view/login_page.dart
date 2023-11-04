@@ -14,11 +14,23 @@ import 'package:go_router/go_router.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
+  void _onSuccessFulAuthentication(BuildContext context) {
+    final params = GoRouterState.of(context).queryParameters;
+    final redirect = params['redirectTo'];
+    if (params.isNotEmpty && redirect != null) {
+      context.push(redirect);
+      return;
+    }
+
+    context.push('/map');
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginBloc>(
       create: (context) => LoginBloc(
         authRepository: GetIt.I<AuthRepository>(),
+        onSuccessfulAuthentication: () => _onSuccessFulAuthentication(context),
       ),
       child: Scaffold(
         appBar: AppBar(

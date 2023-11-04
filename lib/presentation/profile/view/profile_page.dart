@@ -59,7 +59,7 @@ class ProfileView extends StatelessWidget {
           _ProfileTile(
             title: 'Выйти',
             onTap: () {},
-          )
+          ),
         ],
       ),
     );

@@ -46,7 +46,7 @@ void main() {
           const LoginState(
             email: Email.dirty('dhruvin.vainsh02@gmail.com'),
           ),
-        )
+        ),
       ],
     );
 
@@ -61,7 +61,7 @@ void main() {
           const LoginState(
             password: Password.dirty('randomPassword@1234'),
           ),
-        )
+        ),
       ],
     );
 
@@ -77,7 +77,7 @@ void main() {
             status: FormzSubmissionStatus.failure,
             errorMessage: EmailValidationError.empty.message,
           ),
-        )
+        ),
       ],
     );
 
@@ -107,7 +107,7 @@ void main() {
             errorMessage: EmailValidationError.notValidFormat.message,
             email: const Email.dirty('Dhruvin'),
           ),
-        )
+        ),
       ],
     );
 
@@ -137,7 +137,7 @@ void main() {
             errorMessage: PasswordValidationError.empty.message,
             email: const Email.dirty('dhruvin.vainsh02@gmail.com'),
           ),
-        )
+        ),
       ],
     );
 
@@ -179,7 +179,7 @@ void main() {
             email: const Email.dirty('dhruvin.vainsh02@gmail.com'),
             password: const Password.dirty('dhr'),
           ),
-        )
+        ),
       ],
     );
 

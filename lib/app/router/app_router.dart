@@ -1,5 +1,3 @@
-import 'dart:developer' as dev;
-
 import 'package:codeunion/app/router/router.dart';
 import 'package:codeunion/domain/auth/repository/auth_repo.dart';
 import 'package:codeunion/presentation/home/home.dart';
@@ -8,8 +6,6 @@ import 'package:codeunion/presentation/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sheet/route.dart';
-import 'package:sheet/sheet.dart';
 
 /// Holds all router configuration for app.
 final class AppRouter {
@@ -39,7 +35,7 @@ final class AppRouter {
             pageBuilder: (_, state) => NoTransitionPage(
               child: Scaffold(
                 appBar: AppBar(
-                  title: const Text('Лента'),
+                  title: const Text('Tape'),
                 ),
                 body: Center(
                   child: Builder(
@@ -61,7 +57,7 @@ final class AppRouter {
             pageBuilder: (ctx, state) => NoTransitionPage(
               child: Scaffold(
                 appBar: AppBar(
-                  title: const Text('Карта'),
+                  title: const Text('Map'),
                 ),
               ),
             ),
@@ -71,7 +67,7 @@ final class AppRouter {
             pageBuilder: (ctx, state) => NoTransitionPage(
               child: Scaffold(
                 appBar: AppBar(
-                  title: const Text('Избранные'),
+                  title: const Text('Selected'),
                 ),
               ),
             ),
@@ -81,47 +77,6 @@ final class AppRouter {
             pageBuilder: (ctx, state) => const NoTransitionPage(
               child: ProfilePage(),
             ),
-            routes: [
-              GoRoute(
-                path: AppRoutes.investmentModal,
-                pageBuilder: (context, state) {
-                  return SheetPage<void>(
-                    fit: SheetFit.loose,
-                    child: WillPopScope(
-                      onWillPop: () async {
-                        print(
-                            'Back button has been pressed at investment modal');
-                        return Future.value(true);
-                      },
-                      child: Container(
-                        color: Colors.white,
-                        height: 200,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            const Text(
-                              'Testing bottom sheet',
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            OutlinedButton(
-                              onPressed: () {
-                                context.push(AppRoutes.test);
-                              },
-                              child: const Text('Navigate'),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ],
           ),
         ],
       ),
@@ -139,8 +94,6 @@ final class AppRouter {
       ),
     ],
     redirect: (context, state) {
-      dev.log(state.toStringDebugString());
-
       final isAuthenticated = GetIt.I<AuthRepository>().isAuthenticated();
       if (isAuthenticated) {
         return null;
